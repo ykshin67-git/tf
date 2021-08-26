@@ -1,6 +1,4 @@
-
-2.resource.tf
- resource "azurerm_resource_group" "user17-rg" {
+resource "azurerm_resource_group" "user17-rg" {
     name     = "user17rg"
     location = "koreacentral"
 
