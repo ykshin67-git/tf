@@ -1,7 +1,7 @@
 resource "azurerm_virtual_machine" "web2" {
-    name                  = "davidweb2"
-    location              = azurerm_resource_group.david-rg.location
-    resource_group_name   = azurerm_resource_group.david-rg.name
+    name                  = "user17web2"
+    location              = azurerm_resource_group.user17-rg.location
+    resource_group_name   = azurerm_resource_group.user17-rg.name
     availability_set_id   = azurerm_availability_set.avset.id
     delete_os_disk_on_termination    = true
     network_interface_ids = [azurerm_network_interface.nic2.id]
@@ -21,20 +21,17 @@ resource "azurerm_virtual_machine" "web2" {
     }
 
  os_profile {
-        computer_name  = "davidweb2"
-        admin_username = "azureuser"
-        admin_password = "Pass****"
-	custom_data= file("web.sh")
+        computer_name  = "user17web2"
+        admin_username = "user17"
+        admin_password = "lpg0416710!@"
+        custom_data= file("web.sh")
     }
 
-os_profile_linux_config {
+ os_profile_linux_config {
         disable_password_authentication = false
         ssh_keys {
-	    ## ssh-keygen -t rsa -b 4096 -m PEM   명령어를 통해 Private Key(id_rsa)와 Public Key(id_rsa.pub)파일 생성
-            ## 서버 접근을 위해 관리 서버에서 생성한 id_rsa.pub 파일을 가상서버로 복사
-            path     = "/home/azureuser/.ssh/authorized_keys"   ## 가상 서버에 복사되는 위치
-	    ## id_rsa.pub 파일 내용을 아래 key_data에 넣어줌 (무조건 한줄로!!!)
-            key_data = file("~/.ssh/id_rsa.pub")
+           path     = "/home/user17/.ssh/authorized_keys"  ## "/root/.ssh/authorized_keys"
+           key_data = file("~/.ssh/id_rsa.pub")
         }
     }
     boot_diagnostics {
@@ -43,6 +40,6 @@ os_profile_linux_config {
     }
 
     tags = {
-        environment = "Terraform Demo"
+        environment = "Created with Teraform"
     }
 }
