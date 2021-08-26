@@ -1,4 +1,3 @@
-6.lb.tf
 resource "azurerm_lb" "user17-lb" {
   name = "user17lb"
   location = azurerm_resource_group.user17-rg.location
