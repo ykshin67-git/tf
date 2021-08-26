@@ -1,8 +1,10 @@
-resource "azurerm_resource_group" "david-rg" {
-    name     = "davidrg"
+
+2.resource.tf
+ resource "azurerm_resource_group" "user17-rg" {
+    name     = "user17rg"
     location = "koreacentral"
 
     tags = {
-        environment = "Terraform Demo"
+        environment = "Created with Teraform"
     }
 }
