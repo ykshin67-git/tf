@@ -1,4 +1,4 @@
-resource "azurerm_lb_nat_rule" "natrule1" {
+resource "azurerm_lb_nat_rule" "natrule2" {
   resource_group_name            = azurerm_resource_group.user17-rg.name
   loadbalancer_id                = azurerm_lb.user17-lb.id
   name                           = "web2SSH"
